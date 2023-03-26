@@ -52,7 +52,7 @@ pipeline {
              }
           }
             steps {
-                script{echo 'testing the application'
+                script{echo 'Testing the application'
                 sh 'mvn test'}
             }
         }
