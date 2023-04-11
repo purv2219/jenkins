@@ -66,7 +66,7 @@ pipeline {
 
         }
             steps {
-                script{echo 'deploying the application'
+                script{echo 'Deploying The Application'
                 withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
                     sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
                     sh "docker push sahil4555/spring-boot:${IMAGE_NAME}"
