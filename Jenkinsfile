@@ -40,7 +40,7 @@ pipeline {
                     sh 'mvn clean package'
                     def version = (readFile('pom.xml') =~ '<version>(.+)</version>')[0][2]
                     env.IMAGE_NAME = "$version-$BUILD_NUMBER"
-                    sh "docker build -t sahil4555/spring-boot:${IMAGE_NAME} ."
+                    sh "docker build -t purv22/spring-boot:${IMAGE_NAME} ."
                         
                     }
             }
@@ -69,7 +69,7 @@ pipeline {
                 script{echo 'Deploying The Application'
                 withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
                     sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
-                    sh "docker push sahil4555/spring-boot:${IMAGE_NAME}"
+                    sh "docker push purv22/spring-boot:${IMAGE_NAME}"
                 }}
                 
              }
